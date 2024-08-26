@@ -6,7 +6,7 @@ var getDB=require('../common/dbConn')
 router.post('/register',async function (req,res,next){
     try{
     const data=req.body.data
-    const db=getDB();
+    const db=await getDB();
     const collection=db.collection('students')
     const result=await collection.insertOne(data)
     res.send(result)
@@ -20,7 +20,7 @@ router.get('/get-std',async function(req,res,next){
     try{
     const db= await getDB();
     const collection=db.collection("students")
-    const result=collection.find().toArray()
+    const result= await collection.find().toArray()
     res.send(result);
     }
     catch(ex){
