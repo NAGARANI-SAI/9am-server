@@ -55,5 +55,14 @@ router.delete('/delete-std/:id',async function(req,res,next){
         console.error(ex)
     }
 })
+router.post('/login',function(req,res,next){
+    const {uid,pwd}=req.body
+    if(uid==='rani'&&pwd==="nagarani"){
+        res.send([{uid,pwd}])
+    }else
+    {
+        res.send([])
+    }
+})
 
 module.exports=router;
